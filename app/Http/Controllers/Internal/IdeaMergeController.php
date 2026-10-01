@@ -17,9 +17,7 @@ class IdeaMergeController extends Controller
         $idea->comments()->update(['idea_id' => $target->id]);
         $idea->reactions()->update(['idea_id' => $target->id]);
 
-        foreach ($idea->voters as $voter) {
-            $target->voters()->attach($voter->id);
-        }
+        $target->voters()->syncWithoutDetaching($idea->voters->pluck('id'));
 
         $idea->merged_into_id = $target->id;
         $idea->status = IdeaStatus::Declined;

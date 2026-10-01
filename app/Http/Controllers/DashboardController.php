@@ -13,6 +13,7 @@ class DashboardController extends Controller
         $ideas = Idea::with('user', 'voters:id', 'subscribers:id')
             ->withCount(['publicComments as comments_count'])
             ->orderByDesc('votes')
+            ->orderByDesc('id')
             ->paginate(12);
 
         return inertia('Dashboard', ['ideas' => IdeaResource::collection($ideas)]);

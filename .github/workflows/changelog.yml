@@ -129,6 +129,7 @@ jobs:
             ${{ steps.commits.outputs.diff }}
             ```
           claude_args: |
+            --model claude-sonnet-4-6
             --json-schema '{"type":"object","properties":{"body":{"type":"string"}},"required":["body"]}'
             --allowedTools ""
 
@@ -223,6 +224,7 @@ jobs:
             ${{ steps.commits.outputs.diff }}
             ```
           claude_args: |
+            --model claude-sonnet-4-6
             --json-schema '{"type":"object","properties":{"body":{"type":"string"}},"required":["body"]}'
             --allowedTools ""
 

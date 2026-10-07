@@ -95,6 +95,8 @@ jobs:
       - name: Write changelog with Claude
         id: changelog
         uses: anthropics/claude-code-action@v1
+        env:
+          ANTHROPIC_BASE_URL: ${{ vars.ANTHROPIC_BASE_URL }}
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           # This workflow is intentionally re-dispatched by the release job, so
@@ -178,6 +180,8 @@ jobs:
       - name: Write release notes with Claude
         id: release_notes
         uses: anthropics/claude-code-action@v1
+        env:
+            ANTHROPIC_BASE_URL: ${{ vars.ANTHROPIC_BASE_URL }}
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           allowed_bots: github-actions
